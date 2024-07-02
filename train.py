@@ -40,15 +40,6 @@ def init_parameters():
     parser.add_argument('--learning_rate', type=float, default=1e-3, help='learning_rate')
     parser.add_argument('--weight_decay', type=float, default=1e-4, help='weight_decay')
 
-
-    # parser.add_argument('--input', type=str, default='only_df', help='only_df,df_zstack1,df_zstack2')
-    # parser.add_argument('--inverted_input', type=my_bool, default=False, help='')
-    # parser.add_argument('--testbool', type=my_bool, default=False, help='# test')
-
-
-    # parser.add_argument('--train_path', type=str, default='H:/bacteria_may21_ourlab/mixed3_bf_stained/training/input/*.npy', help='')
-    # parser.add_argument('--valid_path', type=str, default='H:/bacteria_may21_ourlab/mixed3_bf_stained/validation/input/*.npy', help='')
-
     vc = parser.parse_args()
     # vc.record_file = vc.train_path
 
@@ -81,10 +72,6 @@ if __name__ == '__main__':
     os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"
     os.environ["CUDA_VISIBLE_DEVICES"] = f"{train_config.gpu_id}"
 
-    # train_images = glob.glob('D:/Kevin/Tairan_Data/image_dataset/training/input/*.npy')
-    # random.shuffle(train_images)
-    # print(len(train_images), len(valid_images))
-
 
     if not os.path.exists(f'{train_config.data_name}/val_images/'):
         os.makedirs(f'{train_config.data_name}/val_images/')
@@ -94,33 +81,6 @@ if __name__ == '__main__':
     #         os.makedirs(f'{valid_config.data_name}/Models/best/')
 
     image_size = train_config.image_size
-
-
-##
-# # data
-# num_epochs = 10  # train for at least 50 epochs for good results
-# image_size = 64
-# # KID = Kernel Inception Distance, see related section
-# kid_image_size = 75
-# kid_diffusion_steps = 5
-# plot_diffusion_steps = 20
-
-# # sampling
-# min_signal_rate = 0.02
-# max_signal_rate = 0.95
-
-# # architecture
-# embedding_dims = 32
-# embedding_max_frequency = 1000.0
-# widths = [32, 64, 96, 128]
-# block_depth = 2
-
-# # optimization
-# batch_size = 64
-# ema = 0.999
-# learning_rate = 1e-3
-# weight_decay = 1e-4
-# ##
 
 
 
@@ -209,31 +169,6 @@ if __name__ == '__main__':
             checkpoint_callback,
         ],
     )
-    #     callbacks=[
-    #         keras.callbacks.LambdaCallback(on_epoch_end=model.plot_images),
-    #         checkpoint_callback,
-    #     ],
-    # )
-
-
-    # epochs = num_epochs
-    # for epoch in range(epochs):
-    #     print(f"\nStart of epoch {epoch}")
-
-    #     # Iterate over the batches of the dataset.
-    #     for step, (x_batch_train) in enumerate(train_dataset):
-
-    #         vals_tr = model.train_step(x_batch_train)
-
-    #     for Vstep, (x_batch_train) in enumerate(val_dataset):
-
-    #         vals = model.test_step(x_batch_train)
-    #     # Log every 100 batches.
-    #     if step % 1 == 0:
-    #         print(
-    #             f"Valid: noise loss at step {step}: {float(vals['n_loss']):.4f} | image loss: {float(vals['i_loss']):.4f} | kid: {float(vals['kid']):.4f}"
-    #         )
-    #         print(f"Seen so far: {(step + 1) * batch_size} samples")
 
 
 
