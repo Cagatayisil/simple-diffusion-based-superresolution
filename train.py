@@ -15,7 +15,7 @@ from diffusion_model import DiffusionModel
 
 
 def init_parameters():
-    parser = argparse.ArgumentParser(description='bacteria_staining')
+    parser = argparse.ArgumentParser(description='superresolution')
     parser.add_argument('--gpu_id', type=int, default=0, help='the ID of the visible GPU device (only used when not in parallel mode)')
 
     parser.add_argument('--data_name', type=str, default='SR4_2', help='')
